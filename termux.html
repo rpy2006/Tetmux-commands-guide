@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERMUX COMMAND GUIDE</title>
+<style>
+body {font-family: monospace;background: #0d1117;color: #c9d1d9;margin: 0;padding: 0;line-height: 1.6;}
+h1 {text-align: center;color: #58a6ff;margin: 20px;}
+input, button {padding: 10px;margin: 5px;border: none;border-radius: 4px;}
+input {width: 80%;background: #161b22;color: #c9d1d9;border: 1px solid #30363d;}
+table {width: 95%;margin: auto;border-collapse: collapse;word-break: break-word;}
+th, td {padding: 8px;border: 1px solid #30363d;text-align: left;}
+th {background: #161b22;}
+tr:nth-child(even) {background: #161b22;}
+button {background: #238636;color: white;cursor: pointer;}
+button:hover {background: #2ea043;}
+.copy-btn {background: #238636;color: #fff;padding: 5px 10px;border: none;border-radius: 4px;cursor: pointer;}
+.copy-btn:hover {background: #2ea043;}
+#notice {text-align: center;font-size: 14px;color: #8b949e;margin: 10px;padding: 15px;background: #161b22;border-left: 5px solid red;border-radius: 15px;max-width: 900px;margin-left: auto;margin-right: auto;}
+.footer {text-align: center;margin: 20px;color: #8b949e;font-size: 14px;}
+.category-filter {text-align: center;margin: 15px 0;display: flex;flex-wrap: wrap;justify-content: center;}
+.category-btn {margin: 5px;padding: 8px 12px;background: #1f6feb;color: white;border: none;border-radius: 4px;cursor: pointer;}
+.category-btn:hover {background: #2b7de9;}
+.category-btn.active {background: #238636;}
+@media (max-width: 768px) {input {width: 90%;} th, td {padding: 6px;font-size: 14px;} .category-btn {padding: 6px 8px;font-size: 12px;}}
+</style>
+</head>
+<body>
+<h1>TERMUX COMMAND GUIDE</h1>
+<div style="text-align:center">
+<input type="text" id="search" placeholder="Search commands..." onkeyup="filterCommands()">
+</div>
+<div class="category-filter" id="categoryFilter"></div>
+<marquee id="notice">This website is designed purely for educational and personal skill development, providing a structured, accessible way to learn Termux, Linux commands, and system management safely. It does not promote, support, or endorse any illegal or unethical activities. Users are encouraged to practice these commands responsibly on their own devices or environments where they have explicit permission, respecting privacy and local laws.</marquee>
+<table id="commandTable">
+<thead><tr><th width="5%">#</th><th width="30%">Command</th><th width="45%">Description</th><th width="20%">Action</th></tr></thead>
+<tbody id="commandBody"></tbody>
+</table>
+<div class="footer">🔧 Built with ❤️ for Termux learners and developers | v2.0</div>
+<script src="commands.js"></script>
+<script>
+let allCommands = [];
+let currentCategory = 'all';
+function loadCommands() {
+allCommands = commands.map((cmd,i)=>({...cmd,category:cmd.category?cmd.category:"general",id:cmd.id?cmd.id:i+1}));
+const categories = [...new Set(allCommands.map(cmd => cmd.category))];
+const categoryFilter = document.getElementById('categoryFilter');
+categoryFilter.innerHTML = '';
+const allBtn = document.createElement('button');
+allBtn.className = 'category-btn active';
+allBtn.textContent = 'All';
+allBtn.onclick = () => filterByCategory('all');
+categoryFilter.appendChild(allBtn);
+categories.forEach(category => {
+const btn = document.createElement('button');
+const safeCategory = category ? category : "uncategorized";
+btn.textContent = safeCategory.charAt(0).toUpperCase() + safeCategory.slice(1);
+btn.className = 'category-btn';
+btn.onclick = () => filterByCategory(category);
+categoryFilter.appendChild(btn);});
+displayCommands(allCommands);}
+function displayCommands(commandsToDisplay) {
+const body = document.getElementById('commandBody');
+body.innerHTML = '';
+commandsToDisplay.forEach(cmd => {
+const row = document.createElement('tr');
+row.innerHTML = `<td>${cmd.id}</td><td><code>${cmd.name}</code></td><td>${cmd.description}</td><td><button class='copy-btn' onclick='copyText("${cmd.name.replace(/"/g,'\\"')}")'>Copy</button></td>`;
+body.appendChild(row);});}
+function filterCommands() {
+const val = document.getElementById('search').value.toLowerCase();
+const filtered = allCommands.filter(cmd => (currentCategory==='all'||cmd.category===currentCategory)&&(cmd.name.toLowerCase().includes(val)||cmd.description.toLowerCase().includes(val)));
+displayCommands(filtered);}
+function filterByCategory(category) {
+currentCategory = category;
+document.querySelectorAll('.category-btn').forEach(btn => {btn.classList.remove('active');if ((category === 'all' && btn.textContent === 'All') || btn.textContent.toLowerCase() === category) {btn.classList.add('active');}});
+filterCommands();}
+function copyText(text) {
+navigator.clipboard.writeText(text).then(()=>{
+const notification = document.createElement('div');
+notification.style.position = 'fixed';
+notification.style.bottom = '20px';
+notification.style.right = '20px';
+notification.style.backgroundColor = '#238636';
+notification.style.color = 'white';
+notification.style.padding = '10px 20px';
+notification.style.borderRadius = '4px';
+notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+notification.style.zIndex = '1000';
+notification.style.transition = 'opacity 0.5s';
+notification.innerText = `Copied: ${text}`;
+document.body.appendChild(notification);
+setTimeout(() => {notification.style.opacity = '0';setTimeout(() => {document.body.removeChild(notification);}, 500);}, 2000);}).catch(err => {console.error('Failed to copy: ', err);});}
+window.onload = loadCommands;
+</script>
+</body>
+</html>
