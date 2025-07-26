@@ -1,79 +1,69 @@
 # Termux Commands Guide
 
-🚀 **[Live Site →](https://rpy2006.github.io/Tetmux-commands-guide/)**
+## 📄 Description
 
-A clean, mobile-responsive **Termux Commands Guide** to help you learn and practice Termux, Linux, and system management commands efficiently with:
+**Termux Commands Guide** is a web-based tool to help users learn and use Termux, Linux, and system administration commands efficiently. Designed with a dark-themed, mobile-friendly interface, this tool allows users to search, filter, and copy commands with ease—perfect for beginners and pros alike.
 
-✅ **Search and Filter** by category  
-✅ **Copy button** for each command  
-✅ **Mobile-friendly dark UI**  
-✅ **Structured, accessible learning**  
-✅ **Offline-friendly with lightweight footprint**
+## 📚 Table of Contents
 
----
-
-## Features
-
-- 📱 **Mobile Responsive:** Works seamlessly on phones, tablets, and desktops.
-- 🔍 **Real-time Search:** Instantly filter and find commands.
-- 🗂️ **Category Filtering:** Focus on package management, networking, system commands, and more.
-- ⚡ **One-click Copy:** Quickly copy commands to your clipboard for instant use.
-- 🌙 **Dark Aesthetic:** Eye-comfortable terminal-inspired theme for focused learning.
-- 🎯 **Fast Load:** No heavy frameworks, instant access even on low-bandwidth.
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [How to Use](#how-to-use)
+- [Live Demo](#live-demo)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+- [Future Plans](#future-plans)
+- [Support](#support)
 
 ---
 
-## Usage
+## 🚀 Features
 
-1️⃣ Open [https://rpy2006.github.io/Tetmux-commands-guide/](https://rpy2006.github.io/Tetmux-commands-guide/) in your browser.  
-2️⃣ Use the search bar to filter commands by keywords.  
-3️⃣ Click categories to filter commands based on your learning focus.  
-4️⃣ Tap **Copy** to instantly copy a command to your clipboard.
-
----
-
-## Project Structure
-
-- `index.html` – Main interactive interface.
-- `termux_commands_clean_ready.js` – Contains 700+ structured Termux/Linux commands with category tagging.
-- `styles` (embedded) – Clean dark UI for consistent readability.
-- Future: Add **PWA offline support and dark/light auto toggle** for extended functionality.
+- ✅ 700+ categorized Termux/Linux commands
+- 🔍 Real-time search & keyword filtering
+- 🗂️ Category-based browsing (Networking, System, etc.)
+- ⚡ One-click **Copy** button for each command
+- 🌙 Terminal-style **Dark Mode** UI
+- 📱 Mobile-optimized responsive design
+- 🖥️ Lightweight and offline-friendly
 
 ---
 
-## Contributing
+## 🛠️ Technologies Used
 
-✅ If you wish to add commands, improvements, or language support:
-
-- Fork this repository.
-- Add your improvements.
-- Open a Pull Request with clear details of your changes.
-
----
-
-## License
-
-This project is **free for educational and personal use**.
+- **HTML** – Page structure  
+- **CSS** – Clean, dark-themed user interface  
+- **JavaScript** – Command filtering, search, copy function  
+- *(Planned)* PWA support for offline usage  
 
 ---
 
-## Credits
+## 💡 How to Use
 
-Made with ❤️ by [RPY](https://github.com/rpy2006) to empower Termux learners and developers.
+1. Open the live demo:  
+   👉 [https://rpy2006.github.io/Tetmux-commands-guide/](https://rpy2006.github.io/Tetmux-commands-guide/)
 
----
+2. Use the search bar to filter commands.
 
-## Future Plans
+3. Tap categories like “Networking” or “Package Management” to focus your learning.
 
-- [ ] Add **offline PWA support**.
-- [ ] Add **export commands to .txt/.pdf** for offline notes.
-- [ ] Add **dark/light toggle** with system preference detection.
-- [ ] Add **command explanation blog linking** for deeper learning.
+4. Click the **Copy** button next to any command to copy it to your clipboard.
 
 ---
 
-## ⭐ Support
+## 🌐 Live Demo
 
-If you find this helpful, give the repo a ⭐ on [GitHub](https://github.com/rpy2006/Tetmux-commands-guide) to support this free resource for the Termux community.
+Try the project online without setup:  
+👉 **[Termux Commands Guide - Live Demo](https://rpy2006.github.io/Tetmux-commands-guide/)**
 
 ---
+
+## 🧰 Installation (Local Usage)
+
+To run this project locally:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/rpy2006/Tetmux-commands-guide.git
