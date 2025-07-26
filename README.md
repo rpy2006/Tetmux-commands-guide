@@ -67,3 +67,7 @@ To run this project locally:
 1. Clone the repository:
    ```sh
    git clone https://github.com/rpy2006/Tetmux-commands-guide.git
+
+2. Navigate into the project :
+```sh 
+cd termux-commands-guide
